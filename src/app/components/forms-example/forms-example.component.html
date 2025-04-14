@@ -1,0 +1,42 @@
+<div class="form-container">
+    <h2>Registration Form</h2>
+  
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <!-- Name Field -->
+      <div>
+        <label for="name">Name:</label>
+        <input id="name" type="text" formControlName="name" />
+        <div class="error" *ngIf="f['name'].touched && f['name'].errors?.['required']">
+          Name is required.
+        </div>
+      </div>
+  
+      <!-- Email Field -->
+      <div>
+        <label for="email">Email:</label>
+        <input id="email" type="email" formControlName="email" />
+        <div class="error" *ngIf="f['email'].touched && f['email'].errors?.['required']">
+          Email is required.
+        </div>
+        <div class="error" *ngIf="f['email'].touched && f['email'].errors?.['email']">
+          Please enter a valid email.
+        </div>
+      </div>
+  
+      <!-- Password Field -->
+      <div>
+        <label for="password">Password:</label>
+        <input id="password" type="password" formControlName="password" />
+        <div class="error" *ngIf="f['password'].touched && f['password'].errors?.['required']">
+          Password is required.
+        </div>
+        <div class="error" *ngIf="f['password'].touched && f['password'].errors?.['minlength']">
+          Password must be at least 8 characters long.
+        </div>
+      </div>
+  
+      <!-- Submit Button -->
+      <button type="submit" [disabled]="form.invalid">Submit</button>
+    </form>
+  </div>
+  

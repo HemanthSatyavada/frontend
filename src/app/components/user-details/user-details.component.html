@@ -1,0 +1,32 @@
+<div class="user-details-container">
+    <h2>Fetch User Details</h2>
+  
+    <!-- Input Field for User ID -->
+    <div>
+      <label for="userId">Enter User ID:</label>
+      <input id="userId" type="number" [(ngModel)]="userId" placeholder="Enter User ID" />
+    </div>
+  
+    <!-- Fetch Button -->
+    <div>
+      <button (click)="fetchUserDetails()" [disabled]="isLoading">
+        {{ isLoading ? 'Fetching...' : 'Fetch User Details' }}
+      </button>
+    </div>
+  
+    <!-- Error Message -->
+    <div *ngIf="errorMessage" class="error">
+      {{ errorMessage }}
+    </div>
+  
+    <!-- User Details -->
+    <div *ngIf="userDetails && !errorMessage">
+      <h3>User Details:</h3>
+      <p><strong>ID:</strong> {{ userDetails.id }}</p>
+      <p><strong>Name:</strong> {{ userDetails.name }}</p>
+      <p><strong>Email:</strong> {{ userDetails.email }}</p>
+      <p><strong>Phone:</strong> {{ userDetails.phone }}</p>
+      <p><strong>Created At:</strong> {{ userDetails.createdAt }}</p>
+    </div>
+  </div>
+  

@@ -1,0 +1,66 @@
+<div class="container mt-4">
+    <h2>Car List</h2>
+    
+    <!-- Search Form -->
+    <div class="card mb-4">
+      <div class="card-header">Search Cars</div>
+      <div class="card-body">
+        <form (submit)="searchCars()" class="row g-3">
+          <div class="col-md-2">
+            <input type="text" class="form-control" placeholder="Brand" [(ngModel)]="searchInput.brand" name="brand">
+          </div>
+          <div class="col-md-2">
+            <input type="text" class="form-control" placeholder="Model" [(ngModel)]="searchInput.model" name="model">
+          </div>
+          <div class="col-md-2">
+            <input type="text" class="form-control" placeholder="Type" [(ngModel)]="searchInput.type" name="type">
+          </div>
+          <div class="col-md-2">
+            <input type="text" class="form-control" placeholder="Color" [(ngModel)]="searchInput.color" name="color">
+          </div>
+          <div class="col-md-2">
+            <select class="form-select" [(ngModel)]="searchInput.availabilityStatus" name="availabilityStatus">
+              <option value="">Any Status</option>
+              <option value="Available">Available</option>
+              <option value="Rented">Rented</option>
+              <option value="Maintenance">Maintenance</option>
+            </select>
+          </div>
+          <div class="col-md-2">
+            <button type="submit" class="btn btn-primary">Search</button>
+            <button type="button" class="btn btn-secondary ms-2" (click)="loadCars()">Reset</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  
+    <!-- Car Table -->
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Brand</th>
+          <th>Model</th>
+          <th>Type</th>
+          <th>Color</th>
+          <th>Price/Day</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let car of cars">
+          <td>{{ car.id }}</td>
+          <td>{{ car.brand }}</td>
+          <td>{{ car.model }}</td>
+          <td>{{ car.type }}</td>
+          <td>{{ car.color }}</td>
+          <td>${{ car.rentalPricePerDay }}</td>
+          <td>{{ car.availabilityStatus }}</td>
+          <td>
+            <button class="btn btn-danger btn-sm" (click)="deleteCar(car.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

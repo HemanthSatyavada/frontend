@@ -1,0 +1,23 @@
+<div class="dictionary-container">
+    <h3>Dynamic Dictionary</h3>
+  
+    <!-- Input for user -->
+    <input 
+      id="user-input" 
+      type="text" 
+      [(ngModel)]="userInput" 
+      (input)="updateSuggestions()" 
+      placeholder="Start typing..."
+    />
+  
+    <!-- Suggestions list -->
+    <div class="suggestions">
+      <p *ngIf="suggestions.length === 0">No suggestions available.</p>
+      <ul *ngIf="suggestions.length > 0">
+        <li *ngFor="let suggestion of suggestions">
+          {{ suggestion.word }} (Hamming Distance: {{ suggestion.distance }})
+        </li>
+      </ul>
+    </div>
+  </div>
+  

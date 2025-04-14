@@ -1,0 +1,28 @@
+<div class="container">
+    <h1>Hamming Distance Calculator</h1>
+    <!-- Input for first string -->
+    <div>
+      <label for="string1">String 1:</label>
+      <input id="string1" type="text" [(ngModel)]="value1" />
+    </div>
+  
+    <!-- Input for second string -->
+    <div>
+      <label for="string2">String 2:</label>
+      <input id="string2" type="text" [(ngModel)]="value2" />
+    </div>
+  
+    <!-- Button to trigger calculation -->
+    <button (click)="calculateHamming()">Calculate Hamming Distance</button>
+  
+    <!-- Display error message if any -->
+    <div *ngIf="errorMessage" style="color: red;">
+      {{ errorMessage }}
+    </div>
+  
+    <!-- Display the Hamming Distance -->
+    <div *ngIf="hammingDistance !== null">
+      <p>Hamming Distance: {{ hammingDistance }}</p>
+    </div>
+  </div>
+  

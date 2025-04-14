@@ -1,0 +1,20 @@
+<div class="editor-container">
+    <h3>Smart Editor</h3>
+    <input 
+      id="editor" 
+      type="text" 
+      [(ngModel)]="userInput" 
+      (input)="updateSuggestions()" 
+      placeholder="Start typing..." 
+    />
+  
+    <div class="suggestions">
+      <p *ngIf="suggestions.length === 0">No suggestions available.</p>
+      <ul *ngIf="suggestions.length > 0">
+        <li *ngFor="let suggestion of suggestions">
+          {{ suggestion.word }} (Hamming Distance: {{ suggestion.distance }})
+        </li>
+      </ul>
+    </div>
+  </div>
+  
